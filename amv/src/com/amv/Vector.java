@@ -1,11 +1,32 @@
 package com.amv;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Vector {
 
+	double x = 1,y = 0, z=0, theta, r, phi;
+	List<Double> listCart = new ArrayList<Double>();
+	List<Double> listSpher = new ArrayList<Double>();
 
+	public void setX(double d) {
+		// TODO Auto-generated method stub
+	}
+
+	public void setY(double d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setZ(double d) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public double getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	public double getY() {
@@ -18,6 +39,20 @@ public class Vector {
 		return 0;
 	}
 
+	public void setCartisian(double x, double y, double z){
+		
+	}
+	
+	public List<Double> getCartesian(){
+	
+		listCart.add(x);
+		listCart.add(y);
+		listCart.add(z);
+		return listCart;
+		
+	}
+	
+	
 	public double getTheta() {
 		// TODO Auto-generated method stub
 		return 0;
@@ -32,22 +67,15 @@ public class Vector {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	public void setX(double d) {
-		// TODO Auto-generated method stub
+	
+	public List<Double> getSpherical(){
 		
+		listSpher.add(r);
+		listSpher.add(theta);
+		listSpher.add(phi);
+		return listSpher;
 	}
-
-	public void setY(double d) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setZ(double d) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	/*
 	public double getCartesianX(){
 		return 0;
 		
@@ -77,10 +105,7 @@ public class Vector {
 		// TODO Auto-generated method stub
 		
 	}
+	*/
 
-	public double getRadius() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

@@ -6,6 +6,7 @@ public class OperationsTest extends TestCase {
 
 	private Vector v1, v2, v3;
 	private Vector vResult;
+	private double result;
 	private Operations ops;
 	
 	protected void setUp() throws Exception {
@@ -19,6 +20,7 @@ public class OperationsTest extends TestCase {
 		super.tearDown();
 	}
 	
+	// Vector addition
 	public void testAddNull(){
 		vResult = ops.add(null,null,null);
 		assertTrue(vResult.getX() == 0);
@@ -41,7 +43,7 @@ public class OperationsTest extends TestCase {
 	}
 	
 	public void testAddThreeNullVectors(){
-		vResult = ops.add(v1,v2,v3);
+		vResult = ops.add(null,null,null);
 		assertTrue(vResult.getX() == 0);
 		assertTrue(vResult.getY() == 0);
 		assertTrue(vResult.getZ() == 0);
@@ -77,5 +79,26 @@ public class OperationsTest extends TestCase {
 		assertTrue(v3.getY() == 2);
 		assertTrue(v3.getZ() == 1);	
 	}
-
+	
+	//dot(scalar) product (2 vectors)
+	
+	public void testTwoNullVectors(){
+		result = ops.scalarProduct(null, null);
+		assertTrue(result == 0);
+	}
+	public void testOneVectorNull(){
+		
+		result = ops.scalarProduct(v1,null);
+		
+		assertTrue(result == 0);
+	}
+	
+	public void testScalarProduct(){
+		v1.setCartisian(2,4,0);
+		v2.setCartisian(1,5,0);
+		
+		result = ops.scalarProduct(v1,v2);
+		
+		assertTrue(result == (2*1)+(4*5));
+	}
 }

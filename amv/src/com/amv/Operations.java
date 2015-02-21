@@ -8,5 +8,10 @@ public class Operations {
 		return null;
 	}
 
+	public double scalarProduct(Vector v1, Vector v2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 }

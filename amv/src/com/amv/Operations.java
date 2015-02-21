@@ -18,5 +18,10 @@ public class Operations {
 		return 0;
 	}
 
+	public int getMagnitude(Vector v2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 }

@@ -96,20 +96,31 @@ public class OperationsTest extends TestCase {
 	public void testScalarProduct(){
 		v1.setCartisian(2,4,0);
 		v2.setCartisian(1,5,0);
-		
+		double angleDiff = v1.getTheta()-v2.getTheta();
 		result = ops.scalarProduct(v1,v2);
 		
 		// x1*x2 + y1*y2;
 		assertTrue(result == (2*1)+(4*5));
+		
+		// |a|*|b|* cos(theta)
+		assertTrue(result == ops.getMagnitude(v1)*
+							ops.getMagnitude(v2)*
+							Math.cos(angleDiff));
 	}
 	
 	// vector (cross product)
 	public void testCrossProduct(){
 		v1.setCartisian(2,4,0);
 		v2.setCartisian(1,5,0);
+		double angleDiff = v1.getTheta()-v2.getTheta();
 		
 		// x1*y2 - x2*y1;
 		result = ops.crossProduct(v1,v2);
 		assertTrue(result == (2*5)-(4*1));
+		
+		// |a|*|b|* sin(theta)
+		assertTrue(result == ops.getMagnitude(v1)*
+							ops.getMagnitude(v2)*
+							Math.sin(angleDiff));
 	}
 }

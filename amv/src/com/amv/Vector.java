@@ -75,37 +75,15 @@ public class Vector {
 		listSpher.add(phi);
 		return listSpher;
 	}
-	/*
-	public double getCartesianX(){
-		return 0;
-		
-	}
 
-	public double getCartesianZ() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public double getCartesianY() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public void setCartisianX(double d) {
+	public void convertToCartisian(double r2, double theta2) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void setCartisianY(double d) {
+	public void convertToPolar(double x2, double y2) {
 		// TODO Auto-generated method stub
 		
 	}
-
-	public void setCartisianZ(double d) {
-		// TODO Auto-generated method stub
-		
-	}
-	*/
-
 
 }

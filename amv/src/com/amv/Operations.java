@@ -13,5 +13,10 @@ public class Operations {
 		return 0;
 	}
 
+	public double crossProduct(Vector v1, Vector v2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 }

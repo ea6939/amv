@@ -99,6 +99,17 @@ public class OperationsTest extends TestCase {
 		
 		result = ops.scalarProduct(v1,v2);
 		
+		// x1*x2 + y1*y2;
 		assertTrue(result == (2*1)+(4*5));
+	}
+	
+	// vector (cross product)
+	public void testCrossProduct(){
+		v1.setCartisian(2,4,0);
+		v2.setCartisian(1,5,0);
+		
+		// x1*y2 - x2*y1;
+		result = ops.crossProduct(v1,v2);
+		assertTrue(result == (2*5)-(4*1));
 	}
 }

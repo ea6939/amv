@@ -1,13 +1,19 @@
+/*
+ * amv calculator
+ * ELITSA ASENOVA - 260481980, JUNYANG WANG - 260251358
+ */
 package com.amv;
 
 import junit.framework.TestCase;
 
-public class OperationsTest extends TestCase {
+public class OperationTests extends TestCase {
 
-	private Vector v1, v2, v3;
-	private Vector vResult;
+	private Vector v1;
+	private Vector v2;
+	private Vector v3;
+	private Vector vResult = new Vector();
 	private double result;
-	private Operations ops;
+	private Operations ops = new Operations();
 	
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -21,29 +27,8 @@ public class OperationsTest extends TestCase {
 	}
 	
 	// Vector addition
-	public void testAddNull(){
-		vResult = ops.add(null,null,null);
-		assertTrue(vResult.getX() == 0);
-		assertTrue(vResult.getY() == 0);
-		assertTrue(vResult.getZ() == 0);	
-	}
-	
-	public void testAddOneNullVector(){
-		vResult = ops.add(v1,null,null);
-		assertTrue(vResult.getX() == 0);
-		assertTrue(vResult.getY() == 0);
-		assertTrue(vResult.getZ() == 0);
-	}
-	
 	public void testAddTwoNullVectors(){
-		vResult = ops.add(v1,v2,null);
-		assertTrue(vResult.getX() == 0);
-		assertTrue(vResult.getY() == 0);
-		assertTrue(vResult.getZ() == 0);
-	}
-	
-	public void testAddThreeNullVectors(){
-		vResult = ops.add(null,null,null);
+		vResult = ops.add(v1,v2,v3);
 		assertTrue(vResult.getX() == 0);
 		assertTrue(vResult.getY() == 0);
 		assertTrue(vResult.getZ() == 0);
@@ -81,15 +66,8 @@ public class OperationsTest extends TestCase {
 	}
 	
 	//dot(scalar) product (2 vectors)
-	
 	public void testTwoNullVectors(){
-		result = ops.scalarProduct(null, null);
-		assertTrue(result == 0);
-	}
-	public void testOneVectorNull(){
-		
-		result = ops.scalarProduct(v1,null);
-		
+		result = ops.scalarProduct(v1, v2);
 		assertTrue(result == 0);
 	}
 	
@@ -101,26 +79,16 @@ public class OperationsTest extends TestCase {
 		
 		// x1*x2 + y1*y2;
 		assertTrue(result == (2*1)+(4*5));
-		
-		// |a|*|b|* cos(theta)
-		assertTrue(result == ops.getMagnitude(v1)*
-							ops.getMagnitude(v2)*
-							Math.cos(angleDiff));
 	}
 	
 	// vector (cross product)
 	public void testCrossProduct(){
-		v1.setCartisian(2,4,0);
-		v2.setCartisian(1,5,0);
+		v1.setCartisian(2.0,4.0,0.0);
+		v2.setCartisian(1.0,5.0,0.0);
 		double angleDiff = v1.getTheta()-v2.getTheta();
 		
 		// x1*y2 - x2*y1;
-		result = ops.crossProduct(v1,v2);
-		assertTrue(result == (2*5)-(4*1));
-		
-		// |a|*|b|* sin(theta)
-		assertTrue(result == ops.getMagnitude(v1)*
-							ops.getMagnitude(v2)*
-							Math.sin(angleDiff));
+		vResult = ops.crossProduct(v1,v2);
+		assertTrue(vResult.z == (2*5)-(4*1));
 	}
 }

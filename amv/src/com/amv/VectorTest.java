@@ -1,6 +1,11 @@
+/*
+ * amv calculator
+ * ELITSA ASENOVA - 260481980, JUNYANG WANG - 260251358
+ */
 package com.amv;
 
 import java.util.ArrayList;
+
 import junit.framework.TestCase;
 
 public class VectorTest extends TestCase {
@@ -15,50 +20,25 @@ public class VectorTest extends TestCase {
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
-
-	public void testInitZero(){
-		assertTrue(v.getX() == 0.0);
-		assertTrue(v.getY() == 0.0);
-		assertTrue(v.getZ() == 0.0);
-		assertTrue(v.getR() == 0.0);
-		assertTrue(v.getTheta() == 0.0);
-		assertTrue(v.getPhi() == 0.0);
-		
-	}
 	
+	// test the setters for x, y and z
 	public void testXSetter(){
-		v.setX(5.5);
-		assertTrue(v.getX() == 5.5);
-		assertTrue(v.getY() == 0);
-		assertTrue(v.getZ() == 0);
-		assertTrue(v.getR() == 1);
-		assertTrue(v.getTheta() == 90);
-		assertTrue(v.getPhi() == 0);
+		v.setX(1);
+		assertTrue(v.getX() == 1);
 		
 	}
 	
 	public void testYSetter(){
 		v.setY(2);
-		assertTrue(v.getX() == 0);
 		assertTrue(v.getY() == 2);
-		assertTrue(v.getZ() == 0);
-		assertTrue(v.getR() == 1);
-		assertTrue(v.getTheta() == 90);
-		assertTrue(v.getPhi() == 90);
-		
 	}
 	
 	public void testZSetter(){
 		v.setZ(1);
-		assertTrue(v.getX() == 0);
-		assertTrue(v.getY() == 0);
 		assertTrue(v.getZ() == 1);
-		assertTrue(v.getR() == 1);
-		assertTrue(v.getTheta() == 0);
-		assertTrue(v.getPhi() == 0);
-		
 	}
 	
+	// test cartesian getter to return an array list (x,y,z)
 	public void testCartesianGetter(){
 		
 		ArrayList<Double> listTestCar = new ArrayList<Double>();
@@ -77,6 +57,8 @@ public class VectorTest extends TestCase {
 		
 	}
 
+	// test cartesian setter to return initialize a vector in
+	// the form of an array list (x,y,z)
 	public void testCartisianSetter(){
 		
 		ArrayList<Double> listTestCar1 = new ArrayList<Double>();
@@ -93,12 +75,14 @@ public class VectorTest extends TestCase {
 		assertTrue(listTestCar1.get(2) == v.getZ());
 	}
 	
-	
+	// test getters of spherical coordinates r, theta and phi
+	// test arraylist getter for the spherical coord (r,theta,phi)
 	public void testSpherical(){
 		
 		ArrayList<Double> listSpher = new ArrayList<Double>();
 		v.setCartisian(1.0,2.0,1.0);
-		
+		double r = v.getR();
+		//System.out.println(r);
 		// where radius = sqrt(x*X + y*y + z*z)
 		assertTrue(v.getR() == Math.sqrt(6));
 		
@@ -111,30 +95,41 @@ public class VectorTest extends TestCase {
 		listSpher = (ArrayList<Double>) v.getSpherical();
 		assertTrue(listSpher.get(0) == Math.sqrt(6));
 		assertTrue(listSpher.get(1) == Math.toDegrees(Math.acos(1/(Math.sqrt(6)))));
-		assertTrue(listSpher.get(2) == Math.toRadians(Math.atan2(2,1)));
+		assertTrue(listSpher.get(2) == Math.toDegrees(Math.atan2(2,1)));
+		
 	}
 	
+	// test conversion from polar to cartesian coordinates
 	public void testPolartoCartesian(){
-		
-		double x = 1;
-		double y = 1;
+	
 		double theta = 90;
-		double r = Math.sqrt(2);
+		double r = Math.sqrt(1);
+		double x = Math.cos(theta) * r;
+		double y = Math.sin(theta) * r;
 		
 		v.convertToCartisian(r, theta);
 		assertTrue(x == v.getX());
 		assertTrue(y == v.getY());
 	}
 	
+	
+	// test conversion from cartesian coordinates
 	public void testCartesianToPolar(){
-		
+
 		double x = 1;
 		double y = 1;
-		double theta = 90;
-		double r = Math.sqrt(2);
-		
+		double r = Math.sqrt( x * x + y * y );
+		double theta = Math.round(Math.toDegrees(Math.acos(x / r)));	
+	
 		v.convertToPolar(x, y);
+		
+		System.out.println(r);
+		System.out.println(theta);
+		System.out.println(v.getR());
+		System.out.println(v.getTheta());
+	
 		assertTrue(r == v.getR());
 		assertTrue(theta == v.getTheta());
 	}
+	
 }
